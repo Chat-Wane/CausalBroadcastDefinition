@@ -1,0 +1,8 @@
+{
+    "name": "bounded-broadcast-definition",
+    "version": "0.1.0",
+    "main": "build/bounded-broadcast-definition.bundle.js",
+    "ignore": [
+        "lib/*"
+    ]
+}

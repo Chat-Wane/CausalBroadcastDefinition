@@ -1,0 +1,20 @@
+{
+    "name": "bounded-broadcast-definition",
+    "version": "0.1.0",
+    "author": "Chat-Wane <grumpy.chat.wane@gmail.com>",
+    "description": "Broadcasting component relying on a peer provider",
+    "main": "./lib/boundedbroadcast.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/chat-wane/BoundedBroadcastDefinition.git"
+    },
+    "keywords": [
+        "broadcast",
+        "bounded metadata"
+    ],
+    "scripts":{
+        "debug": "browserify -r ./lib/boundedbroadcast.js:bounded-broacast-definition --debug > build/bounded-broadcast-definition.bundle.debug.js",
+        "build": "browserify -r ./lib/boundedbroadcast.js:bounded-broadcast-definition | uglifyjs > build/bounded-broadcast-definition.bundle.js"
+    },
+    "license": "MIT"
+}
