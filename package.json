@@ -1,20 +1,26 @@
 {
-    "name": "bounded-broadcast-definition",
-    "version": "0.1.0",
+    "name": "causal-broadcast-definition",
+    "version": "0.0.1",
     "author": "Chat-Wane <grumpy.chat.wane@gmail.com>",
-    "description": "Broadcasting component relying on a peer provider",
-    "main": "./lib/boundedbroadcast.js",
+    "description": "Broadcasting component with causality tracking mechanism relying on a peer provider",
+    "main": "./lib/causalbroadcast.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/chat-wane/BoundedBroadcastDefinition.git"
+        "url": "https://github.com/chat-wane/CausalBroadcastDefinition.git"
     },
     "keywords": [
         "broadcast",
-        "bounded metadata"
+        "causality tracking"
+    ],
+    "dependencies":{
+        "unicast-definition": "0.0.x"
+    },
+    "bundledDependencies":[
+        "unicast-definition"
     ],
     "scripts":{
-        "debug": "browserify -r ./lib/boundedbroadcast.js:bounded-broacast-definition --debug > build/bounded-broadcast-definition.bundle.debug.js",
-        "build": "browserify -r ./lib/boundedbroadcast.js:bounded-broadcast-definition | uglifyjs > build/bounded-broadcast-definition.bundle.js"
+        "debug": "browserify -r ./lib/causalbroadcast.js:causal-broadcast-definition --debug > build/causal-broadcast-definition.bundle.debug.js",
+        "build": "browserify -r ./lib/causalbroadcast.js:causal-broadcast-definition | uglifyjs > build/causal-broadcast-definition.bundle.js"
     },
     "license": "MIT"
 }
