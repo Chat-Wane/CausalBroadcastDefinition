@@ -3,7 +3,7 @@
 Broadcasting component on top of a communication overlay. It includes a
 causality tracking mechanism before delivering messages to the application.
 
-## Installation (NOT Released yet)
+## Installation
 
 ```
 $ npm install causal-broadcast-definition
@@ -42,4 +42,14 @@ In any case:
 
   // #3 send a message to the whole network with causality metadata
   broadcast.send(toBroadcastMessage, messageUidCausality, messageUidDepending);
+
+  // #4 it is the responsability of the application to retrieve old missed
+  // request by the anti-entropy
+  broadcast.on('antiEntropy', function(socket,
+                                       remoteCausalStruct,
+                                       localCausalStruct){
+    // #A retrieve the elements between remoteCausalStruct and localCausalStruct
+    // #B send it back the causal broadcast
+    broadcast.sendAntiEntropyResponse(socket, localCausalStruct, elements);
+  });
 ```
