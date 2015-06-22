@@ -1,6 +1,6 @@
 {
     "name": "causal-broadcast-definition",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "main": "build/causal-broadcast-definition.bundle.js",
     "ignore": [
         "lib/*"
