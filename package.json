@@ -1,6 +1,6 @@
 {
     "name": "causal-broadcast-definition",
-    "version": "0.0.7",
+    "version": "0.1.0",
     "author": "Chat-Wane <grumpy.chat.wane@gmail.com>",
     "description": "Broadcasting component with causality tracking mechanism relying on a peer provider",
     "main": "./lib/causalbroadcast.js",
