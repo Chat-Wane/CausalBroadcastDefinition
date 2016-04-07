@@ -13,7 +13,7 @@
         "causality tracking"
     ],
     "dependencies":{
-        "unicast-definition": "0.0.x"
+        "unicast-definition": "0.1.x"
     },
     "bundledDependencies":[
         "unicast-definition"

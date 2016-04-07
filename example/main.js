@@ -31,6 +31,7 @@ var callbacks = function(src, dest){
     };
 };
 
+broadcast1.send("Hi from b1", {_e:1, _c:2})
 // #1 s1 joins s2 and creates a 2-peers networks
 rps1.connection(callbacks(rps1, rps2));
 // #2 after a bit, s3 joins the network through s1
@@ -39,19 +40,16 @@ setTimeout(function(){
 }, 5000);
 
 // #B receive event log the message
-broadcast1.on("receive", function(message){
-    console.log('@b1 :' + message);
-});
+function rcv(peer){
+    return function(message){ console.log('@'+peer+' :' + message); };
+};
 
-broadcast2.on("receive", function(message){
-    console.log('@b2 :' + message);
-});
-
-broadcast3.on("receive", function(message){
-    console.log('@b3 :' + message);
-});
+broadcast1.on('receive', rcv('b1'));
+broadcast2.on('receive', rcv('b2'));
+broadcast3.on('receive', rcv('b3'));
 
 // #C send a message from peer 1 to all other connected peers
 setTimeout(function(){
-    broadcast1.send("Hi from b1", {_e:1, _c:1})
+    broadcast1.send('Hi from b1', {_e:1, _c:1})
 }, 10000);
+
