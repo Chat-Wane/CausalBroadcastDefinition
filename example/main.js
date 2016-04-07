@@ -53,3 +53,11 @@ setTimeout(function(){
     broadcast1.send('Hi from b1', {_e:1, _c:1})
 }, 10000);
 
+// #D anti entropy
+broadcast1.on('antiEntropy', function(id, rcvCausality, lclCausality){
+    console.log('@b1 : received anti-entropy request from @'+id);
+//    console.log('Received vector' + rcvCausality);
+//    console.log('Local vector' + lclCausality);
+});
+
+                             
