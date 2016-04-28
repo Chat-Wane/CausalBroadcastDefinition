@@ -33,11 +33,12 @@ In any case:
   // #1 initialize the protocols
   var rps = new RandomPeerSampling(args1);
   var cs = new CausalStruct(args2);
-  broadcast = new CausalBroadcast(rps, cs, myProtocolName);
+  var delta = 3*60*1000; // interval between the anti-entropy rounds
+  broadcast = new CausalBroadcast(rps, cs, myProtocolName, delta);
 
   // #2 define the receive event of broadcast causally ready
-  broadcast.on('receive', function(receivedBroadcastMessage){
-    console.log('I received the message: ' + receiveBroadcastMessage);
+  broadcast.on('receive', function(message){
+    console.log('I received the message: ' + message);
   });
 
   // #3 send a message to the whole network with causality metadata
@@ -45,11 +46,11 @@ In any case:
 
   // #4 it is the responsability of the application to retrieve old missed
   // request by the anti-entropy
-  broadcast.on('antiEntropy', function(socket,
+  broadcast.on('antiEntropy', function(id,
                                        remoteCausalStruct,
                                        localCausalStruct){
     // #A retrieve the elements between remoteCausalStruct and localCausalStruct
     // #B send it back the causal broadcast
-    broadcast.sendAntiEntropyResponse(socket, localCausalStruct, elements);
+    broadcast.sendAntiEntropyResponse(id, localCausalStruct, elements);
   });
 ```
