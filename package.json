@@ -1,26 +1,43 @@
 {
     "name": "causal-broadcast-definition",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "author": "Chat-Wane <grumpy.chat.wane@gmail.com>",
-    "description": "Broadcasting component with causality tracking mechanism relying on a peer provider",
+    "description": "Broadcasting component using causality tracking mechanisms and providing an easy-to-use event-like API",
     "main": "./lib/causalbroadcast.js",
     "repository": {
         "type": "git",
-        "url": "https://github.com/chat-wane/CausalBroadcastDefinition.git"
+        "url": "https://github.com/ran3d/causal-broadcast-definition.git"
     },
     "keywords": [
         "broadcast",
-        "causality tracking"
+        "causality tracking",
+        "WebRTC"
     ],
-    "dependencies":{
-        "unicast-definition": "0.1.x"
+    "dependencies": {
+        "lodash": "^4.17.4",
+        "debug": "^2.6.1",
+        "unicast-definition": "^1.0.1"
     },
-    "bundledDependencies":[
+    "bundledDependencies": [
+        "lodash",
+        "debug",
         "unicast-definition"
     ],
-    "scripts":{
+    "devDependencies": {
+        "browserify": "6.2.x",
+        "esdoc": "^0.5.2",
+        "esdoc-node": "^1.0.1"
+    },
+    "scripts": {
         "debug": "browserify -r ./lib/causalbroadcast.js:causal-broadcast-definition --debug > build/causal-broadcast-definition.bundle.debug.js",
-        "build": "browserify -r ./lib/causalbroadcast.js:causal-broadcast-definition | uglifyjs > build/causal-broadcast-definition.bundle.js"
+        "build": "browserify -r ./lib/causalbroadcast.js:causal-broadcast-definition > build/causal-broadcast-definition.bundle.js",
+        "esdoc": "esdoc && npm run esdoc:example",
+        "esdoc:example": "cp -R ./build ./examples ./docs",
+        "test": "npm run all",
+        "ava": "ava -v",
+        "watch": "ava -v --watch",
+        "coverage": "nyc ava",
+        "all": "npm run debug && npm run build && npm run esdoc"
     },
     "license": "MIT"
 }
