@@ -16,12 +16,12 @@
     "dependencies": {
         "lodash": "^4.17.4",
         "debug": "^2.6.1",
-        "unicast-definition": "^1.0.1"
+        "uuid": "^3.0.1"
     },
     "bundledDependencies": [
         "lodash",
         "debug",
-        "unicast-definition"
+        "uuid"
     ],
     "devDependencies": {
         "browserify": "6.2.x",
